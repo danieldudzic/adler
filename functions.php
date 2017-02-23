@@ -1,6 +1,8 @@
 <?php
 /**
- * Adler functions and definitions
+ * adler functions and definitions
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package Adler
  */
@@ -57,12 +59,6 @@ if ( ! function_exists( 'adler_setup' ) ) :
 				'caption',
 			)
 		);
-
-		/*
-		 * Add editor custom style to make it look more like the frontend
-		 * Also enqueue the custom Google Fonts also
-		 */
-		add_editor_style( array( 'editor-style.css', adler_fonts_url() ) );
 
 		$defaults = array(
 			'default-color' => '#FFF'

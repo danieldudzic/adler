@@ -395,7 +395,7 @@ blockquote,
 }
 
 body,
-.no-thumbnail .site-header a,
+.no-post-thumbnail .site-header a,
 .main-navigation .menu li a,
 .site-branding .site-title,
 .footer-navigation .menu li a
@@ -699,7 +699,7 @@ blockquote > *,
             box-shadow: inset 0 0 250px 0 rgba(0, 0, 0, .75);
 }
 
-.no-thumbnail .site-branding a img,
+.no-post-thumbnail .site-branding a img,
 .site-branding a img
 {
     position: absolute;
@@ -712,7 +712,7 @@ blockquote > *,
 
 @media not screen and (min-width: 900px)
 {
-    .no-thumbnail .site-branding a img,
+    .no-post-thumbnail .site-branding a img,
     .site-branding a img
     {
         max-width: 90px;
@@ -990,7 +990,7 @@ p a[href$='.gif']
     display: none;
 }
 
-.page .has-thumbnail .hero__content
+.page .has-post-thumbnail .hero__content
 {
     margin-bottom: 40px;
 }
@@ -1042,7 +1042,7 @@ p a[href$='.gif']
     margin-bottom: 40px;
 }
 
-.page.no-thumbnail .site-branding .site-title
+.page.no-post-thumbnail .site-branding .site-title
 {
     color: #0e364f;
 }
@@ -1052,12 +1052,12 @@ p a[href$='.gif']
     text-align: center;
 }
 
-.single .has-thumbnail .post,
-.single .no-thumbnail .post
+.single .has-post-thumbnail .post,
+.single .no-post-thumbnail .post
 {
     background-color: transparent;
 }
-.single .no-thumbnail .header-content .hero__meta
+.single .no-post-thumbnail .header-content .hero__meta
 {
     display: none;
 }
@@ -1174,26 +1174,26 @@ p a[href$='.gif']
     }
 }
 
-.no-thumbnail .site-header
+.no-post-thumbnail .site-header
 {
     position: relative;
 
     border-bottom: none;
     background-color: transparent;
 }
-.no-thumbnail .site-header a
+.no-post-thumbnail .site-header a
 {
     border-bottom: none;
 }
-.no-thumbnail .site-branding .site-title
+.no-post-thumbnail .site-branding .site-title
 {
     color: #0e364f;
 }
-.no-thumbnail .main-navigation .menu li a
+.no-post-thumbnail .main-navigation .menu li a
 {
     color: #0e364f;
 }
-.no-thumbnail .nav--toolbar a:before
+.no-post-thumbnail .nav--toolbar a:before
 {
     color: #0e364f;
 }

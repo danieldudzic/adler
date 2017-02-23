@@ -1,5 +1,5 @@
 .page {
-  .has-thumbnail {
+  .has-post-thumbnail {
     .hero__content {
       margin-bottom: 40px;
     }
@@ -52,7 +52,7 @@
 }
 
 .page {
-  &.no-thumbnail {
+  &.no-post-thumbnail {
     .site-branding {
       .site-title {
         color: $dark;

@@ -1,10 +1,10 @@
 .single {
-  .has-thumbnail, .no-thumbnail {
+  .has-post-thumbnail, .no-post-thumbnail {
     .post {
       background-color: transparent;
     }
   }
-  .no-thumbnail {
+  .no-post-thumbnail {
     .header-content {
       .hero__meta {
         display: none;
