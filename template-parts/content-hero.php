@@ -9,7 +9,7 @@
 		<?php
 		$hero_class   = "";
 		$hero_style   = "";
-		$split_titles = adler_split_title_half( get_the_title() );
+		$split_titles = get_the_title();
 		$attachment_image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'full' );
 		$image_url        = $attachment_image[0];
 		$hero_class .= "hero_has_image";

@@ -1,19 +1,19 @@
 <?php
 /**
- * The sidebar containing the main widget area.
+ * The sidebar containing the main widget area
  *
- * @package asd
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package Adler
  */
 
+if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	return;
+}
 ?>
-<div class="widgets-area"><?php
-    if (is_active_sidebar('footer-area')) : ?>
-
-        <div id="footer-sidebar" class="footer-area widget-area" role="complementary">
-            <?php dynamic_sidebar('footer-area'); ?>
-        </div><!-- #footer-sidebar -->
-
-    <?php endif; ?>
-
-
-</div><!-- .widgets-area -->
+	<div id="secondary" class="widget-area" role="complementary">
+		<a href class="widget-area-toggle"><i class="fa fa-times"></i></a>
+		<div class="widgets-wrapper">
+			<?php dynamic_sidebar( 'sidebar-1' ); ?>
+		</div>
+	</div><!-- #secondary -->

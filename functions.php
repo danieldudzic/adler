@@ -73,16 +73,13 @@ add_action( 'after_setup_theme', 'adler_setup' );
  */
 function adler_scripts() {
 
-	//FontAwesome Stylesheet
-	wp_enqueue_style( 'adler-font-awesome-style', get_stylesheet_directory_uri() . '/assets/css/font-awesome.css', array(), '4.3.0' );
+	wp_enqueue_style( 'adler-style', get_stylesheet_uri() );
+	
+	wp_enqueue_script( 'adler-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20151215', true );
 
-	wp_enqueue_style( 'adler-style', get_stylesheet_uri(), array('adler-font-awesome-style') );
+	wp_enqueue_script( 'adler-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20151215', true );
 
-	wp_enqueue_script( 'adler-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20120206', true );
-
-	wp_enqueue_script( 'adler-main', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), '20120209', true );
-
-	wp_enqueue_script( 'adler-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'adler-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -94,8 +91,52 @@ function adler_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'adler_scripts' );
 
-//Registering Sidebar
+/**
+ * Returns the Google font stylesheet URL, if available.
+ */
+function adler_fonts_url() {
+	$fonts_url = '';
 
+	/* translators: If there are characters in your language that are not supported
+	 * by Droid Serif, translate this to 'off'. Do not translate into your own language.
+	 */
+	$droid_serif = esc_html_x( 'on', 'Droid Serif font: on or off',	'adler' );
+
+	/* translators: If there are characters in your language that are not supported
+	 * by Permanent Marker, translate this to 'off'. Do not translate into your own language.
+	 */
+	$permanent_marker = esc_html_x( 'on', 'Permanent Marker font: on or off', 'adler' );
+	
+	/* translators: If there are characters in your language that are not supported
+	 * by Droid Sans Mono, translate this to 'off'. Do not translate into your own language.
+	 */
+	$droid_sans_mono = esc_html_x( 'on', 'Droid Sans Mono font: on or off', 'adler' );
+
+	if ( 'off' !== $droid_serif || 'off' !== $permanent_marker || 'off' !== $droid_sans_mono ) {
+		$font_families = array();
+
+		if ( 'off' !== $droid_serif ) {
+			$font_families[] = 'Droid Serif:400,700,400italic,700italic';
+		}
+		if ( 'off' !== $permanent_marker ) {
+			$font_families[] = 'Permanent Marker:400';
+		}
+
+		if ( 'off' !== $droid_sans_mono ) {
+			$font_families[] = 'Droid Sans Mono:400';
+		}
+
+		$query_args = array(
+			'family' => urlencode( implode( '|', $font_families ) ),
+			'subset' => urlencode( 'latin,latin-ext' ),
+		);
+		$fonts_url = add_query_arg( $query_args, "https://fonts.googleapis.com/css" );
+	}
+
+	return esc_url_raw( $fonts_url );
+}
+
+//Registering Sidebar
 function adler_widgets_init() {
 	register_sidebar( array(
 		'name' => __( 'Footer Area', 'adler' ),
@@ -137,7 +178,7 @@ add_filter( 'wp_title', 'adler_wp_title', 10, 2 );
 /**
  * Implement the Custom Header feature.
  */
-//require get_template_directory() . '/inc/custom-header.php';
+require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -148,19 +189,3 @@ require get_template_directory() . '/inc/template-tags.php';
  * Custom functions that act independently of the theme templates.
  */
 require get_template_directory() . '/inc/extras.php';
-
-/**
- * Load Adler Class
- */
-require get_template_directory() . '/inc/adler.php';
-
-/**
- * Load Customify plugin configuration
- */
-require get_template_directory() . '/inc/customify_config.php';
-
-/**
- * Load Recommended/Required plugins notification
- */
-require get_template_directory() . '/inc/required-plugins/required-plugins.php';
-
