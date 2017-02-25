@@ -20,15 +20,14 @@ get_header(); ?>
 					the_archive_title( '<h1 class="page-title">', '</h1>' );
 					the_archive_description( '<div class="taxonomy-description">', '</div>' );
 				?>
-			</header><!-- .page-header -->
-
+			</header>
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
 				if ( 0 === $wp_query->current_post && has_post_thumbnail() ) :
 
-					get_template_part( 'template-parts/content', 'hero' );
+					get_template_part( 'components/post/content', 'hero' );
 
 				else :
 
@@ -37,23 +36,21 @@ get_header(); ?>
 					 * If you want to override this in a child theme, then include a file
 					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 					 */
-					get_template_part( 'template-parts/content', get_post_format() );
+					get_template_part( 'components/post/content', get_post_format() );
 
 				endif;
 
 			endwhile;
-			
+
 			the_posts_navigation();
 
 		else :
 
-			get_template_part( 'template-parts/content', 'none' );
+			get_template_part( 'components/post/content', 'none' );
 
 		endif; ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
+		</main>
+	</div>
 <?php
-get_sidebar();
 get_footer();
